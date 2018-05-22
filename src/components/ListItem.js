@@ -75,5 +75,24 @@ const mapStateToProps = (state, ownProps) => {
 };
 // why put it here? on more complex components will be extremely helpful
 
+// remember mapStateToProps method is our ability to interface from application level state to component level
+// its where we pluck property from our state object and inject them into our components
+
+/*
+  SUMMARY
+  whenever our application state changes, our mapStateToProps method will rerun
+    which thus causes our application to rerender
+      thus calling our componentWillUpdate
+
+  1. whenever we call an action creator
+  2. dispatches an action
+  3. reducers rerun
+  4. state recalulcated
+  5. state flows into mapStateToProps
+  6. new props show up in component
+  7. app rerenders
+*/
+
+
 // when connnect runs - modifies what data that will show up to our list item as props
 export default connect(mapStateToProps, actions)(ListItem);

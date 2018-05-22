@@ -19,3 +19,8 @@ const App = () => {
 };
 
 export default App;
+/*
+  Summary
+    started with a Provider tag from the react-redux library
+    this is how react and redux communicate with each other
+*/

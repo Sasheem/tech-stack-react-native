@@ -1,5 +1,10 @@
-export default (state, action) => {
-  console.log(action);
-  // need an initial value that is not undefined
-  return null;
+// providing null if state is undefined
+export default (state = null, action) => {
+  switch (action.type) {
+    case 'select_library':
+      return action.payload;
+      break;
+    default:
+      return state;
+  }
 };

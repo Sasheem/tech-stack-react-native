@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
-import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Text,
+  TouchableWithoutFeedback,
+  View,
+  LayoutAnimation
+} from 'react-native';
 import { connect } from 'react-redux';
 import { CardSection } from './common/CardSection';
 import * as actions from '../actions';
 
 class ListItem extends Component {
+  // lifecycle method called whenever the component is about to be rerendered to device
+  componentWillUpdate() {
+    LayoutAnimation.spring();
+  }
+
   renderDescription() {
     // figures out whether library was currently selected
     // and returns a description if it does.
     const { library, expanded } = this.props;
+    const { descriptionStyle } = styles;
 
     // critical logic here
     if (expanded) {
       return (
-        <Text>{library.description}</Text>
+        <CardSection>
+          <Text style={descriptionStyle}>
+            {library.description}
+          </Text>
+        </CardSection>
+
       );
     }
   }
@@ -43,6 +58,12 @@ const styles = {
   titleStyle: {
     fontSize: 18,
     paddingLeft: 15
+  },
+  descriptionStyle: {
+    flex: 1,
+    paddingLeft: 5,
+    paddingRight: 5,
+    paddingTop: 5
   }
 };
 
